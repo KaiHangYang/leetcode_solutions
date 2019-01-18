@@ -123,6 +123,7 @@ public:
         
         for (int p = 2; p <= P_LEN; p++) {//p is the length of the path
             vector<vector<int> > dp2 = vector<vector<int>>(N, vector<int>(N, -1));
+
             for (int x1 = 0; x1 < N; ++x1) {
                 for (int x2 = x1; x2 < N; ++x2) {
                     int y1 = p - 1 - x1;
@@ -130,7 +131,6 @@ public:
                     if (y1 < 0 || y2 < 0 || y1 >= N || y2 >= N)
                         continue;
                     if (grid[y1][x1] < 0 || grid[y2][x2] < 0) {
-                        dp[x1][x2] = -1;
                         continue;
                     }   
                     int best = -1, delta = grid[y1][x1];
@@ -155,15 +155,7 @@ public:
 
 int main() {
 
-    vector<vector<int>> inputs({
-            {1,1,1,1,0,0,0},
-            {0,0,0,1,0,0,0},
-            {0,0,0,1,0,0,1},
-            {1,0,0,1,0,0,0},
-            {0,0,0,1,0,0,0},
-            {0,0,0,1,0,0,0},
-            {0,0,0,1,1,1,1}
-            });
+    vector<vector<int>> inputs({{1,-1,-1,-1,-1},{1,0,1,-1,-1},{0,-1,1,0,1},{1,0,1,1,0},{-1,-1,-1,1,1}});
 
     Solution s;
 
